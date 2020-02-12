@@ -38,6 +38,14 @@ router.route("/:id").delete((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+// ***
+router.route("/:id/").delete((req, res) => {
+  Form.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Form deleted."))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+// ***
+
 router.route("/update/:id").post((req, res) => {
   Form.findById(req.params.id)
     .then(form => {
